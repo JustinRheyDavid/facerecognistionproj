@@ -1,4 +1,4 @@
-# Face Recognition & Attendance System 📸🏫
+# Face Recognition & Attendance System 
 
 A real-time, automated face recognition attendance system built using **Python**, **OpenCV**, and the **dlib-based `face_recognition` library**. It captures video from a webcam, matches detected faces against a known database, and logs attendance into a CSV file with date and time.
 
@@ -10,7 +10,7 @@ This project is inspired by the popular Murtaza's Workshop face recognition tuto
 
 ---
 
-## 🛠️ Requirements & Installation
+##  Requirements & Installation
 
 This project is optimized for **Windows** (x64) and **Python 3.11**. Python 3.11 is highly recommended to avoid complex Visual Studio build errors when installing `dlib`.
 
@@ -42,7 +42,7 @@ python -m pip install face-recognition opencv-python==4.9.0.80 numpy<2
 
 ---
 
-## 🚀 Running the Project
+##  Running the Project
 
 ### 1. Add Known Faces
 Place images of people you want the system to recognize into the `ImagesAttendance/` directory. 
@@ -72,7 +72,7 @@ python main.py
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 facerecognistionproj/
@@ -89,5 +89,3 @@ facerecognistionproj/
 
 ---
 
-## 🤝 Contributing
-Feel free to fork this project, submit pull requests, or open issues for feature requests!

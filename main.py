@@ -4,6 +4,8 @@ import face_recognition
 import os
 from datetime import datetime
 
+from camera_utils import open_camera
+
 # Path to the directory containing images of known people
 path = 'ImagesAttendance'
 images = []
@@ -86,12 +88,14 @@ print("Encoding computation completed.")
 
 # Initialize webcam
 print("Initializing webcam...")
-cap = cv2.VideoCapture(0)
+cap, camera_index, backend_name = open_camera()
 
-if not cap.isOpened():
+if cap is None:
     print("ERROR: Could not open webcam. Please check your camera connection or settings.")
-    print("If your webcam index is different, modify `cv2.VideoCapture(0)` with the correct index.")
+    print("If your webcam is still not detected, try changing the camera index in camera_utils.py.")
     exit(1)
+
+print(f"Using camera index {camera_index} via {backend_name}.")
 
 print("\n--- Running Face Recognition ---")
 print("Press 'q' in the video window to quit.")

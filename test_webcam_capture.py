@@ -2,19 +2,17 @@ import cv2
 import sys
 import os
 
+from camera_utils import open_camera
+
 print("--- Webcam Capture Diagnostic ---")
-print("Initializing cv2.VideoCapture(0)...")
-cap = cv2.VideoCapture(0)
+print("Initializing webcam...")
+cap, index_used, backend_used = open_camera()
 
-if not cap.isOpened():
-    print("ERROR: Could not open webcam at index 0.")
-    print("Let's try index 1...")
-    cap = cv2.VideoCapture(1)
-    if not cap.isOpened():
-        print("ERROR: Could not open webcam at index 1 either.")
-        sys.exit(1)
+if cap is None:
+    print("ERROR: Could not open any webcam device.")
+    sys.exit(1)
 
-print("Webcam successfully opened!")
+print(f"Webcam successfully opened at index {index_used} using backend {backend_used}.")
 print("Capturing a few frames to warm up...")
 
 for i in range(1, 11):

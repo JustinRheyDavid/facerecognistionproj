@@ -4,6 +4,8 @@ import face_recognition
 import os
 from datetime import datetime
 
+from camera_utils import open_camera
+
 print("--- Initializing Live Webcam Shot Recognition ---")
 
 # Paths
@@ -38,12 +40,14 @@ for img, name in zip(images, classNames):
         print(f"  Skipped {name} (no face found)")
 
 # Webcam
-print("Opening webcam index 0...")
-cap = cv2.VideoCapture(0)
+print("Opening webcam...")
+cap, camera_index, backend_name = open_camera()
 
-if not cap.isOpened():
-    print("ERROR: Webcam index 0 could not be opened.")
+if cap is None:
+    print("ERROR: Webcam could not be opened.")
     exit(1)
+
+print(f"Using camera index {camera_index} via {backend_name}.")
 
 # Grab 15 frames for camera to auto-expose and capture a stable image
 print("Capturing frames...")
